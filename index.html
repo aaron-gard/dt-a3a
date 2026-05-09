@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industry Partner Initial Solutions — Capgemini · RMIT EMBA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html{font-size:18px;}
+  @media(max-width:1300px){html{font-size:17px;}}
+  @media(max-width:1100px){html{font-size:15px;}}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    /* RMIT palette */
+    --red:#E61E2A; --red-dk:#B2161F;
+    --blue:#000054; --blue-dk:#000033;
+    --yellow:#FAC800;
+    --grey:#E3E5E0; --grey-mid:#C2CAD0;
+    --white:#ffffff; --black:#000000;
+    --text:#1a1a26; --muted:#6A6A78; --border:#DFE0DC;
+    --bg:#F5F5F2;
+  }
+  body{font-family:'Helvetica Neue',Inter,Helvetica,Arial,sans-serif;color:var(--text);background:var(--blue);overflow:hidden;height:100vh;font-weight:300;}
+
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:400;height:56px;background:transparent;}
+  .nav-shim{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.55) 45%,rgba(0,0,0,0));pointer-events:none;transition:opacity .25s;}
+  nav.light .nav-shim{opacity:0}
+  nav.light{background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);}
+  .nav-inner{position:relative;z-index:1;width:100%;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;}
+  .nav-left{display:flex;align-items:center;gap:8px;color:var(--white);font-size:.82rem;font-weight:400;cursor:pointer;letter-spacing:.01em;background:none;border:none;font-family:inherit;padding:6px 0;}
+  .nav-left svg{width:20px;height:20px;flex-shrink:0}
+  .nav-right{color:var(--white);cursor:pointer;background:none;border:none;padding:6px;}
+  .nav-right svg{width:20px;height:20px;display:block}
+  nav.light .nav-left,nav.light .nav-right{color:var(--blue)!important}
+
+  /* RMIT mark — official logo */
+  .nav-center{position:absolute;left:0;right:0;top:0;bottom:0;z-index:2;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+  .rmit-mark{display:flex;align-items:center;background:var(--white);padding:4px 8px;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.08);pointer-events:auto;transition:box-shadow .25s;}
+  nav.light .rmit-mark{background:transparent;box-shadow:none;padding:4px 0;}
+  .rmit-logo{height:24px;width:auto;display:block;}
+
+  /* ── HAMBURGER DRAWER ── */
+  .nav-drawer{position:fixed;top:0;left:0;bottom:0;z-index:500;width:360px;max-width:90vw;background:var(--blue-dk);transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow-y:auto;}
+  .nav-drawer.open{transform:translateX(0)}
+  .nav-drawer-overlay{position:fixed;inset:0;z-index:499;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s;}
+  .nav-drawer-overlay.open{opacity:1;pointer-events:auto}
+  .drawer-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08);}
+  .drawer-close{background:none;border:none;color:white;cursor:pointer;padding:.5rem;}
+  .drawer-section{padding:1.25rem 1.5rem .35rem;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+  .drawer-link{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.5rem;color:rgba(255,255,255,.85);font-size:.9rem;font-weight:300;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s;cursor:pointer;}
+  .drawer-link:hover{background:rgba(255,255,255,.06);color:white}
+  .drawer-link svg{width:20px;height:20px;flex-shrink:0;opacity:.6}
+  .drawer-link:hover svg{opacity:1}
+  .drawer-divider{height:1px;background:rgba(255,255,255,.08);margin:.5rem 0}
+
+  /* ── SLIDE SYSTEM ── */
+  .slide-deck{position:fixed;inset:0;}
+  .slide{position:absolute;top:0;left:0;right:0;bottom:56px;overflow:hidden;visibility:hidden;transform:translateX(100%);}
+  .slide.is-active{visibility:visible;transform:translateX(0);}
+
+  /* ── BOTTOM SLIDE NAV ── */
+  .slide-nav{position:absolute;bottom:0;left:0;right:0;z-index:9000;visibility:visible;background:rgba(255,255,255,.97);border-top:1px solid var(--border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;backdrop-filter:blur(8px);}
+  .slide-nav.dark{background:rgba(0,0,84,.95);border-top:1px solid rgba(255,255,255,.08);}
+  .snav-btn{background:none;border:none;cursor:pointer;color:var(--blue);display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:500;font-family:inherit;padding:.5rem .75rem;border-radius:4px;transition:background .15s;}
+  .snav-btn:hover{background:rgba(0,0,84,.06)}
+  .snav-btn:disabled{opacity:.3;cursor:default}
+  .snav-btn svg{width:20px;height:20px}
+  .slide-nav.dark .snav-btn{color:rgba(255,255,255,.85)}
+  .slide-nav.dark .snav-btn:hover{background:rgba(255,255,255,.08)}
+  .slide-center{display:flex;align-items:center;gap:1rem;flex:1;justify-content:center;}
+  .slide-dots{display:flex;gap:6px;align-items:center;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:all .2s;}
+  .dot.active{width:20px;border-radius:3px;background:var(--red);}
+  .slide-nav.dark .dot{background:rgba(255,255,255,.2)}
+  .slide-nav.dark .dot.active{background:var(--yellow)}
+  .slide-label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+  .slide-nav.dark .slide-label{color:rgba(255,255,255,.5)}
+
+  /* ── SHARED ── */
+  .section-tag{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem;}
+  h2.section-title{font-family:Inter,Helvetica,Arial,sans-serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:200;color:var(--blue);line-height:1.15;letter-spacing:-.02em;margin-bottom:1.1rem;}
+  h2.section-title em{font-style:normal;font-weight:600;color:var(--red);}
+  .section-body{font-size:1.05rem;color:var(--text);line-height:1.75;max-width:560px;margin-bottom:1.25rem;}
+
+  /* Two-col layout */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;height:100%;min-height:calc(100vh - 156px);}
+  .col-media{overflow:hidden;position:relative;}
+  .col-media img{width:100%;height:100%;object-fit:cover;}
+  .col-text{padding:1.5rem 3rem;display:flex;flex-direction:column;justify-content:flex-start;overflow-y:auto;}
+  @media(max-width:800px){.two-col{grid-template-columns:1fr;}.col-media{min-height:240px}}
+
+  /* Light backgrounds */
+  .slide-bg-grey{background:var(--bg);}
+  .slide-bg-white{background:var(--white);}
+  .slide-bg-blue{background:var(--blue);}
+  .slide-bg-red{background:var(--red);}
+
+  /* Fade in */
+  .fi{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
+  .fi.v{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+  /* Hero */
+  .hero-slide{position:relative;width:100%;height:100%;overflow:auto;background:var(--blue);}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dk) 100%);}
+  .hero-pattern{position:absolute;inset:0;opacity:.06;background-image:radial-gradient(var(--white) 1px,transparent 1px);background-size:32px 32px;}
+  .hero-pixel-block{position:absolute;display:grid;grid-template-columns:repeat(8,16px);grid-template-rows:repeat(8,16px);gap:3px;}
+  .hero-pixel-block.tl{top:80px;right:48px;left:auto;}
+  .hero-pixel-block.br{bottom:80px;right:32px;transform:rotate(180deg);}
+  .hero-pixel-block span{background:var(--red);opacity:.7;}
+  .hero-pixel-block span.off{opacity:0;}
+  .hero-pixel-block span.y{background:var(--yellow);}
+  .hero-content{position:relative;z-index:2;padding:80px 3.5rem 3rem;max-width:1100px;}
+  .hero-tag{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem;}
+  .hero-h1{font-family:Inter,Helvetica,Arial,sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:200;color:var(--white);line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem;}
+  .hero-h1 em{font-style:normal;font-weight:600;color:var(--yellow);}
+  .hero-sub{font-size:1.15rem;color:rgba(255,255,255,.85);max-width:780px;line-height:1.7;margin-bottom:2.5rem;font-weight:300;}
+  .hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.18);padding-top:1.5rem;}
+  .hm{padding-left:0;}
+  .hm-l{font-size:.65rem;color:var(--yellow);letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:.4rem;}
+  .hm-v{font-size:1rem;color:var(--white);font-weight:300;}
+
+  /* Section divider slide */
+  .div-slide{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .div-num{position:absolute;top:120px;left:48px;font-family:Inter,sans-serif;font-size:8rem;font-weight:200;color:rgba(255,255,255,.12);letter-spacing:-.05em;line-height:1;}
+  .div-content{position:relative;z-index:2;text-align:center;padding:0 3rem;max-width:1000px;}
+  .div-tag{font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.25rem;}
+  .div-h{font-family:Inter,sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:200;color:var(--white);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.25rem;}
+  .div-h em{font-style:normal;font-weight:600;color:var(--yellow);}
+  .div-sub{font-size:1.1rem;color:rgba(255,255,255,.85);line-height:1.7;font-weight:300;}
+
+  /* Cards */
+  .card-grid{display:grid;gap:1rem;}
+  .card{background:var(--white);padding:1rem 1.25rem;border-left:3px solid var(--blue);}
+  .card.red{border-left-color:var(--red);}
+  .card.yellow{border-left-color:var(--yellow);}
+  .card-tag{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem;}
+  .card.red .card-tag{color:var(--red);}
+  .card.yellow .card-tag{color:#a07f00;}
+  .card-body{font-size:.95rem;color:var(--text);line-height:1.6;}
+
+  /* Team grid */
+  .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;padding:1.5rem 3rem;}
+  .team-card{background:var(--white);padding:1.5rem 1rem;text-align:center;border-top:3px solid var(--red);}
+  .team-photo{width:96px;height:96px;border-radius:50%;background:var(--blue);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:Inter,sans-serif;font-size:1.75rem;font-weight:300;background-size:cover;background-position:center top;overflow:hidden;}
+  .team-photo[style*="background-image"]{color:transparent;font-size:0;}
+  .team-name{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:500;color:var(--blue);margin-bottom:.25rem;}
+  .team-role{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;}
+  .team-bio{font-size:.78rem;color:var(--muted);line-height:1.55;}
+
+  /* Overview pills */
+  .overview-list{display:flex;flex-direction:column;gap:.6rem;}
+  .ov-row{display:grid;grid-template-columns:64px 1fr 120px;align-items:stretch;background:var(--white);border-left:3px solid var(--red);min-height:56px;}
+  .ov-num{background:var(--blue);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:.04em;}
+  .ov-label{display:flex;align-items:center;padding:0 1.25rem;font-size:1.02rem;font-weight:500;color:var(--blue);}
+  .ov-who{display:flex;align-items:center;justify-content:flex-end;padding:0 1.5rem;font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+
+  /* HMW callout */
+  .hmw{background:var(--red);color:var(--white);padding:1.5rem 2rem;margin:1.25rem 0;}
+  .hmw-l{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:.4rem;}
+  .hmw-q{font-family:Inter,sans-serif;font-size:1.55rem;font-weight:300;line-height:1.4;font-style:italic;}
+
+  /* Solution cards */
+  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .sol-card{background:var(--white);padding:1.5rem;border-top:4px solid var(--red);display:flex;flex-direction:column;gap:.85rem;}
+  .sol-tag{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);}
+  .sol-name{font-family:Inter,sans-serif;font-size:1.5rem;font-weight:300;color:var(--blue);line-height:1.2;letter-spacing:-.01em;}
+  .sol-desc{font-size:.95rem;color:var(--text);line-height:1.6;}
+  .sol-meta{display:flex;gap:.4rem;margin-top:auto;flex-wrap:wrap;padding-top:.75rem;border-top:1px solid var(--border);}
+  .sol-pill{background:var(--bg);padding:.3rem .6rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border-radius:2px;}
+
+  /* Pugh table */
+  .pugh-table{width:100%;border-collapse:collapse;background:var(--white);font-size:.92rem;}
+  .pugh-table th{background:var(--blue);color:var(--white);padding:.85rem .75rem;text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;}
+  .pugh-table th.num{text-align:center;}
+  .pugh-table td{padding:.65rem .75rem;border-bottom:1px solid var(--border);color:var(--text);}
+  .pugh-table td.num{text-align:center;font-family:Inter,sans-serif;font-weight:500;color:var(--blue);}
+  .pugh-table td.pos{color:#0a8a3a;font-weight:600;}
+  .pugh-table td.neg{color:var(--red);font-weight:600;}
+  .pugh-table tr.total td{background:var(--red);color:var(--white);font-weight:700;border:none;}
+  .pugh-table tr.total td.num{color:var(--yellow);}
+
+  /* Impact-effort matrix */
+  .matrix{position:relative;width:100%;max-width:780px;aspect-ratio:1.5/1;background:var(--white);border:1px solid var(--border);margin:1rem auto;}
+  .matrix::before,.matrix::after{content:'';position:absolute;background:var(--grey-mid);}
+  .matrix::before{left:50%;top:0;bottom:0;width:1px;}
+  .matrix::after{top:50%;left:0;right:0;height:1px;}
+  .quad-l{position:absolute;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);}
+  .quad-l.tl{top:1rem;left:1rem;}.quad-l.tr{top:1rem;right:1rem;}.quad-l.bl{bottom:1rem;left:1rem;}.quad-l.br{bottom:1rem;right:1rem;}
+  .quad-l small{display:block;font-weight:400;letter-spacing:.04em;text-transform:none;color:var(--muted);font-size:.7rem;margin-top:.2rem;}
+  .axis-y{position:absolute;left:-3rem;top:50%;transform:rotate(-90deg) translateX(50%);transform-origin:right top;font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);}
+  .axis-x{position:absolute;left:50%;bottom:-2rem;transform:translateX(-50%);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);}
+  .dot-plot{position:absolute;width:48px;height:48px;border-radius:50%;background:var(--red);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-weight:700;font-size:1.1rem;transform:translate(-50%,-50%);box-shadow:0 4px 14px rgba(230,30,42,.4);}
+
+  /* Timeline */
+  .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
+  .phase{background:var(--white);display:flex;flex-direction:column;border-top:4px solid var(--red);}
+  .phase-header{padding:1rem 1.25rem .5rem;}
+  .phase-when{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;}
+  .phase-what{font-family:Inter,sans-serif;font-size:1.05rem;font-weight:500;line-height:1.3;color:var(--blue);}
+  .phase-body{padding:.5rem 1.25rem 1.25rem;font-size:.88rem;color:var(--text);line-height:1.6;border-top:1px solid var(--border);margin:0 1.25rem;padding-left:0;padding-right:0;padding-top:.85rem;}
+
+  /* Budget */
+  .budget-table{width:100%;border-collapse:collapse;background:var(--white);}
+  .budget-table th{background:var(--blue);color:var(--white);padding:.9rem 1rem;text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;}
+  .budget-table th.amt{text-align:right;}
+  .budget-table td{padding:.85rem 1rem;border-bottom:1px solid var(--border);color:var(--text);font-size:.95rem;}
+  .budget-table td.amt{text-align:right;font-family:Inter,sans-serif;font-weight:500;color:var(--blue);}
+  .budget-table tr.total td{background:var(--red);color:var(--white);font-weight:700;border:none;font-size:1rem;}
+
+  /* Next steps */
+  .step-list{display:flex;flex-direction:column;gap:.75rem;}
+  .step{display:grid;grid-template-columns:80px 1fr;background:var(--white);border-left:3px solid var(--red);}
+  .step-num{background:var(--red);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:1.75rem;font-weight:300;}
+  .step-body{padding:1rem 1.5rem;}
+  .step-h{font-family:Inter,sans-serif;font-size:1.2rem;font-weight:500;color:var(--blue);margin-bottom:.3rem;}
+  .step-d{font-size:.9rem;color:var(--text);line-height:1.6;}
+
+  /* Slide layout utilities */
+  .slide-body{padding-top:64px;padding-bottom:24px;height:100%;box-sizing:border-box;overflow-y:auto;}
+  .slide-inner{max-width:1300px;margin:0 auto;padding:1.5rem 3rem;}
+
+  .whats-next{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);}
+  .whats-next::before{content:'';width:8px;height:8px;background:var(--red);}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <div class="nav-shim"></div>
+  <div class="nav-inner">
+    <button class="nav-left" aria-label="Menu" onclick="openDrawer()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M0 4h24v2H0zM0 11h14v2H0zM0 18h20v2H0z"/></svg>
+      Menu
+    </button>
+    <button class="nav-right" aria-label="Search" style="visibility:hidden">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2"/></svg>
+    </button>
+  </div>
+  <div class="nav-center">
+    <div class="rmit-mark">
+      <img src="img/rmit-logo.png" alt="RMIT University" class="rmit-logo">
+    </div>
+  </div>
+</nav>
+
+<!-- Drawer -->
+<div class="nav-drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="nav-drawer" id="navDrawer">
+  <div class="drawer-header">
+    <img src="img/rmit-logo.png" alt="RMIT University" style="height:36px;width:auto;background:var(--white);padding:6px 10px;border-radius:3px;">
+    <button class="drawer-close" onclick="closeDrawer()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M6 18L18 6M6 6l12 12"/></svg></button>
+  </div>
+  <div class="drawer-section">Cover</div>
+  <div class="drawer-link" onclick="goTo(0);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/></svg>Hero</div>
+  <div class="drawer-link" onclick="goTo(1);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="4"/><circle cx="17" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/></svg>Meet the team</div>
+  <div class="drawer-link" onclick="goTo(2);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Overview</div>
+  <div class="drawer-divider"></div>
+  <div class="drawer-section">Diagnosis</div>
+  <div class="drawer-link" onclick="goTo(3);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>Industry partner</div>
+  <div class="drawer-link" onclick="goTo(4);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>Understanding the problem</div>
+  <div class="drawer-link" onclick="goTo(5);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Goals & objectives</div>
+  <div class="drawer-link" onclick="goTo(6);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v2m0 4h.01M5 19h14a2 2 0 001.732-3L13.732 4a2 2 0 00-3.464 0L3.34 16a2 2 0 001.732 3z"/></svg>Challenges & opportunities</div>
+  <div class="drawer-divider"></div>
+  <div class="drawer-section">Solutions</div>
+  <div class="drawer-link" onclick="goTo(7);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Three solutions</div>
+  <div class="drawer-link" onclick="goTo(8);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>Pugh analysis</div>
+  <div class="drawer-link" onclick="goTo(9);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><circle cx="8" cy="14" r="2"/><circle cx="14" cy="9" r="2"/><circle cx="18" cy="6" r="2"/></svg>Impact–effort</div>
+  <div class="drawer-divider"></div>
+  <div class="drawer-section">Execute</div>
+  <div class="drawer-link" onclick="goTo(10);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Implementation plan</div>
+  <div class="drawer-link" onclick="goTo(11);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg>Implementation detail</div>
+  <div class="drawer-link" onclick="goTo(12);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>Budget</div>
+  <div class="drawer-link" onclick="goTo(13);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Conclusion</div>
+  <div class="drawer-link" onclick="goTo(14);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>Q&A</div>
+  <div style="margin-top:auto;padding:1.5rem;border-top:1px solid rgba(255,255,255,.08)">
+    <div style="font-size:.62rem;color:rgba(255,255,255,.35);line-height:1.8">BUSM4519 Design Thinking · Assessment 3a<br>Group 1 · Capgemini · 30 May 2026</div>
+  </div>
+</div>
+
+<!-- ══════════════ SLIDE DECK ══════════════ -->
+<div class="slide-deck">
+
+  <!-- ═══ 0 · HERO ═══ -->
+  <div class="slide is-active slide-bg-white" id="s0">
+    <div class="hero-slide" style="background:var(--white);">
+      <div class="hero-bg" style="background:linear-gradient(135deg,#ffffff 0%,#F5F5F2 100%);"></div>
+      <div class="hero-pattern" style="opacity:.04;background-image:radial-gradient(var(--blue) 1px,transparent 1px);"></div>
+      <div class="hero-pixel-block tl" aria-hidden="true">
+        <span></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span></span><span></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span></span><span></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span></span><span class="y"></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span><span></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span><span></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span><span></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span>
+      </div>
+      <div class="hero-content">
+        <div class="hero-tag fi" style="color:var(--red);">BUSM4519 · Design Thinking · Assessment 3a</div>
+        <h1 class="hero-h1 fi d1" style="color:var(--blue);">Industry partner<br><em style="color:var(--red);">initial solutions.</em></h1>
+        <p class="hero-sub fi d2" style="color:var(--text);">Three proposed solutions for Capgemini Australia. Generated through divergent ideation, filtered via Pugh analysis and impact–effort scoring, ready for industry partner feedback before convergence.</p>
+        <div class="hero-meta fi d3" style="border-top-color:var(--border);">
+          <div class="hm"><div class="hm-l" style="color:var(--red);">Industry Partner</div><div class="hm-v" style="color:var(--blue);">Capgemini Australia</div></div>
+          <div class="hm"><div class="hm-l" style="color:var(--red);">Group</div><div class="hm-v" style="color:var(--blue);">RMIT Group 1 · CLN</div></div>
+          <div class="hm"><div class="hm-l" style="color:var(--red);">Date</div><div class="hm-v" style="color:var(--blue);">30 May 2026</div></div>
+          <div class="hm"><div class="hm-l" style="color:var(--red);">Weighting</div><div class="hm-v" style="color:var(--blue);">20% · 12 min</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 1 · MEET THE TEAM ═══ -->
+  <div class="slide slide-bg-grey" id="s1">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Meet the <em>team.</em></h2>
+        <p class="fi d2" style="color:var(--muted);font-size:.95rem;margin:0 0 .5rem;">RMIT consulting team · Executive MBA, MC162</p>
+      </div>
+      <div class="team-grid fi d3">
+        <div class="team-card">
+          <div class="team-photo" style="background-image:url('img/karen.jpg');background-size:cover;background-position:center top;"></div>
+          <div class="team-name">Karen</div>
+          <div class="team-role">Problem lead</div>
+          <div class="team-bio">Frames the business problem and the human need behind it.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">R</div>
+          <div class="team-name">Rachel</div>
+          <div class="team-role">Goals & objectives</div>
+          <div class="team-bio">Defines the strategic goal and the measurable outcomes.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo" style="background-image:url('img/aaron.jpg');background-size:cover;background-position:center top;"></div>
+          <div class="team-name">Aaron</div>
+          <div class="team-role">Challenges & opportunities</div>
+          <div class="team-bio">Surfaces the constraints, the unknowns and the upside.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">D</div>
+          <div class="team-name">Dave</div>
+          <div class="team-role">Solutions & strategy</div>
+          <div class="team-bio">Owns the three alternatives and the comparative scoring.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">A</div>
+          <div class="team-name">Ash</div>
+          <div class="team-role">Implementation & timeline</div>
+          <div class="team-bio">Shapes the rollout plan, KPIs and budget.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 2 · OVERVIEW ═══ -->
+  <div class="slide slide-bg-grey" id="s2">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Presentation <em>overview.</em></h2>
+        <div class="overview-list fi d2" style="margin-top:1.5rem;">
+          <div class="ov-row"><div class="ov-num">01</div><div class="ov-label">Introduction and industry partner</div><div class="ov-who">Group</div></div>
+          <div class="ov-row"><div class="ov-num">02</div><div class="ov-label">Understanding the problem</div><div class="ov-who">Karen</div></div>
+          <div class="ov-row"><div class="ov-num">03</div><div class="ov-label">Our goals and objectives</div><div class="ov-who">Rachel</div></div>
+          <div class="ov-row"><div class="ov-num">04</div><div class="ov-label">Challenges and opportunities</div><div class="ov-who">Aaron</div></div>
+          <div class="ov-row"><div class="ov-num">05</div><div class="ov-label">Proposed solutions and strategies</div><div class="ov-who">Dave</div></div>
+          <div class="ov-row"><div class="ov-num">06</div><div class="ov-label">Implementation plan and timeline</div><div class="ov-who">Ash</div></div>
+          <div class="ov-row"><div class="ov-num">07</div><div class="ov-label">Moving forward: next steps</div><div class="ov-who">Group</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 3 · INDUSTRY PARTNER ═══ -->
+  <div class="slide slide-bg-grey" id="s3">
+    <div class="two-col" style="padding-top:64px;grid-template-columns:38% 62%;">
+      <div class="col-media" style="background:var(--bg);position:relative;border-right:1px solid var(--border);">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;">
+            <div style="display:inline-block;background:var(--white);border:1px dashed var(--grey-mid);padding:1.25rem 2rem;border-radius:4px;margin-bottom:1.25rem;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">[ Partner logo ]</div>
+            <div style="font-family:Inter,sans-serif;font-size:2.1rem;font-weight:200;color:var(--blue);letter-spacing:.04em;">Capgemini</div>
+            <div style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:.5rem;font-weight:600;">Australia</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-text">
+        <h2 class="section-title fi d1">Capgemini <em>Australia.</em></h2>
+        <p class="section-body fi d2" style="max-width:none;">Capgemini is a global consulting, technology, and digital transformation company that helps organisations solve complex problems through the smart use of technology.</p>
+        <p class="section-body fi d3" style="max-width:none;">In Australia, they work across finance, telecommunications, government, and energy, providing expertise in cloud, data, AI, and digital solutions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 4 · UNDERSTANDING THE PROBLEM ═══ -->
+  <div class="slide slide-bg-grey" id="s4">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Understanding the <em>problem.</em></h2>
+        <p class="section-body fi d2" style="max-width:880px;">Capgemini is operating in a rapidly evolving AI landscape, but staff currently use AI only for basic tasks due to limited trust, unclear guidance, and organisational constraints. To enable deeper adoption, Capgemini must help employees move from seeing AI as a simple productivity tool to treating it as a reliable collaborative partner that supports real workflows.</p>
+        <p class="section-body fi d3" style="max-width:880px;">This analysis will focus on staff perceptions, aiming to identify their concerns and areas of hesitation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 5 · GOALS & OBJECTIVES ═══ -->
+  <div class="slide slide-bg-grey" id="s5">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Our <em>strategic goal</em> — and what we'll measure.</h2>
+        <div class="fi d2" style="display:grid;grid-template-columns:1fr 1.3fr;gap:1.5rem;margin-top:1rem;">
+          <div style="background:var(--white);border-top:4px solid var(--red);padding:1.75rem;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;">Strategic goal</div>
+            <p style="font-family:Inter,sans-serif;font-size:1.45rem;font-weight:300;line-height:1.4;margin-bottom:1.25rem;color:var(--blue);">[ One sentence: the future state we are building toward for Capgemini staff. ]</p>
+            <div style="border-top:1px solid var(--border);padding-top:1rem;font-size:.85rem;line-height:1.7;color:var(--text);">
+              Anchored to:<br>
+              · <strong style="color:var(--blue);font-weight:600;">Desirability</strong> — staff want to use it<br>
+              · <strong style="color:var(--blue);font-weight:600;">Feasibility</strong> — fits Capgemini's constraints<br>
+              · <strong style="color:var(--blue);font-weight:600;">Viability</strong> — measurable productivity uplift
+            </div>
+          </div>
+          <div>
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;">Measurable objectives</div>
+            <div class="card-grid" style="gap:.6rem;">
+              <div class="card"><div class="card-body"><strong>1.</strong> Lift active AI adoption from baseline to target % within 6 months.</div></div>
+              <div class="card"><div class="card-body"><strong>2.</strong> Deliver bespoke LMS curriculum to 100% of in-scope staff.</div></div>
+              <div class="card"><div class="card-body"><strong>3.</strong> Establish AI Centre of Excellence with cross-functional leads.</div></div>
+              <div class="card"><div class="card-body"><strong>4.</strong> Move ≥X% of staff from 'tool' to 'collaborator' on perception survey.</div></div>
+              <div class="card red"><div class="card-body"><strong>5.</strong> Track productivity and critical-thinking KPI improvement quarter on quarter.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 6 · CHALLENGES & OPPORTUNITIES ═══ -->
+  <div class="slide slide-bg-grey" id="s6">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">What's <em>in the way</em> — and what's possible if we move.</h2>
+        <div class="fi d2" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;">
+          <div>
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;">Challenges</div>
+            <div class="card-grid" style="gap:.65rem;">
+              <div class="card red"><div class="card-tag">Trust deficit</div><div class="card-body">Hallucinations, automation bias, accountability for outputs.</div></div>
+              <div class="card red"><div class="card-tag">Unclear guidance</div><div class="card-body">Policy and compliance ambiguity around what's allowed.</div></div>
+              <div class="card red"><div class="card-tag">Skill variance</div><div class="card-body">Technical and critical-thinking gap across cohorts.</div></div>
+              <div class="card red"><div class="card-tag">Workflow fit</div><div class="card-body">Generic tooling against highly specific operational work.</div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#a07f00;margin-bottom:.85rem;">Opportunities</div>
+            <div class="card-grid" style="gap:.65rem;">
+              <div class="card yellow"><div class="card-tag">Co-creation culture</div><div class="card-body">Human and AI as partners in real workflows, not bolt-ons.</div></div>
+              <div class="card yellow"><div class="card-tag">Capability uplift</div><div class="card-body">Measurable individual and team productivity gains.</div></div>
+              <div class="card yellow"><div class="card-tag">Client value</div><div class="card-body">Better outcomes for public sector clients through trusted AI use.</div></div>
+              <div class="card yellow"><div class="card-tag">Talent magnet</div><div class="card-body">AI-fluent firm becomes the preferred employer for top talent.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 7 · THREE SOLUTIONS ═══ -->
+  <div class="slide slide-bg-grey" id="s7">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Three alternatives for <em>Capgemini</em> to consider.</h2>
+        <p class="fi d2" style="color:var(--muted);font-size:1rem;margin:0 0 1.5rem;max-width:780px;">Generated through divergent ideation, filtered via Pugh analysis and impact–effort scoring. Each addresses the trust and capability gap differently.</p>
+        <div class="sol-grid fi d3">
+          <div class="sol-card">
+            <div class="sol-tag">Solution A</div>
+            <div class="sol-name">[ Solution name ]</div>
+            <div class="sol-desc">[ One-line value proposition. What changes for staff. ]</div>
+            <div style="font-size:.85rem;color:var(--text);line-height:1.6;border-top:1px solid var(--border);padding-top:.75rem;">
+              <strong style="color:var(--blue);">How it works:</strong> [ The mechanism — what changes day-to-day. ]<br><br>
+              <strong style="color:var(--blue);">Why it works:</strong> [ The DT insight + research evidence. ]<br><br>
+              <strong style="color:var(--red);">Trade-offs:</strong> [ Cost, time, risk, dependencies. ]
+            </div>
+            <div class="sol-meta">
+              <div class="sol-pill">Desire —</div><div class="sol-pill">Feas —</div><div class="sol-pill">Viab —</div>
+            </div>
+          </div>
+          <div class="sol-card">
+            <div class="sol-tag">Solution B</div>
+            <div class="sol-name">[ Solution name ]</div>
+            <div class="sol-desc">[ One-line value proposition. What changes for staff. ]</div>
+            <div style="font-size:.85rem;color:var(--text);line-height:1.6;border-top:1px solid var(--border);padding-top:.75rem;">
+              <strong style="color:var(--blue);">How it works:</strong> [ The mechanism — what changes day-to-day. ]<br><br>
+              <strong style="color:var(--blue);">Why it works:</strong> [ The DT insight + research evidence. ]<br><br>
+              <strong style="color:var(--red);">Trade-offs:</strong> [ Cost, time, risk, dependencies. ]
+            </div>
+            <div class="sol-meta">
+              <div class="sol-pill">Desire —</div><div class="sol-pill">Feas —</div><div class="sol-pill">Viab —</div>
+            </div>
+          </div>
+          <div class="sol-card">
+            <div class="sol-tag">Solution C</div>
+            <div class="sol-name">[ Solution name ]</div>
+            <div class="sol-desc">[ One-line value proposition. What changes for staff. ]</div>
+            <div style="font-size:.85rem;color:var(--text);line-height:1.6;border-top:1px solid var(--border);padding-top:.75rem;">
+              <strong style="color:var(--blue);">How it works:</strong> [ The mechanism — what changes day-to-day. ]<br><br>
+              <strong style="color:var(--blue);">Why it works:</strong> [ The DT insight + research evidence. ]<br><br>
+              <strong style="color:var(--red);">Trade-offs:</strong> [ Cost, time, risk, dependencies. ]
+            </div>
+            <div class="sol-meta">
+              <div class="sol-pill">Desire —</div><div class="sol-pill">Feas —</div><div class="sol-pill">Viab —</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 8 · PUGH ANALYSIS ═══ -->
+  <div class="slide slide-bg-grey" id="s8">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Comparative scoring against the <em>baseline.</em></h2>
+        <p class="fi d2" style="color:var(--muted);font-size:.95rem;margin:0 0 1rem;">Scoring: +1 better than baseline · 0 same · −1 worse. Weighted criteria reflect the strategic objectives.</p>
+        <table class="pugh-table fi d3">
+          <thead>
+            <tr>
+              <th>Criterion</th><th class="num">Weight</th><th class="num">Baseline</th><th class="num">Solution A</th><th class="num">Solution B</th><th class="num">Solution C</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Staff trust uplift</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr><td>Productivity gain</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr><td>Critical thinking development</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr><td>Cost to deploy</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr><td>Time to value</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr><td>Risk and compliance</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr class="total"><td>Weighted total</td><td class="num">—</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 9 · IMPACT-EFFORT MATRIX ═══ -->
+  <div class="slide slide-bg-grey" id="s9">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Where each solution <em>lands.</em></h2>
+        <div class="matrix fi d2" style="margin-top:2rem;">
+          <span class="quad-l tl">Quick wins<small>high impact / low effort</small></span>
+          <span class="quad-l tr">Big bets<small>high impact / high effort</small></span>
+          <span class="quad-l bl">Fill-ins<small>low impact / low effort</small></span>
+          <span class="quad-l br">Avoid<small>low impact / high effort</small></span>
+          <span class="axis-y">↑ Impact</span>
+          <span class="axis-x">Effort →</span>
+          <!-- Plotted dots: tweak top/left to repositon -->
+          <div class="dot-plot" style="top:30%;left:25%;">A</div>
+          <div class="dot-plot" style="top:18%;left:65%;">B</div>
+          <div class="dot-plot" style="top:55%;left:42%;">C</div>
+        </div>
+        <p class="fi d3" style="color:var(--muted);font-size:.85rem;text-align:center;margin-top:1.5rem;">Drag dots to true positions once team agrees scoring. A / B / C correspond to the solution alternatives.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 10 · IMPLEMENTATION OVERVIEW ═══ -->
+  <div class="slide slide-bg-grey" id="s10">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">A 6-month <em>phased rollout.</em></h2>
+        <p class="section-body fi d2" style="max-width:880px;">A 6-month phased rollout to establish Capgemini's AI Centre of Excellence and bespoke LMS training.</p>
+        <div class="phase-grid fi d3" style="margin-top:.5rem;">
+          <div class="phase">
+            <div class="phase-header">
+              <div class="phase-when">6.1 · Months 1–2</div>
+              <div class="phase-what">Partnership establishment</div>
+            </div>
+            <div class="phase-body">Establish internal AI Centre of Excellence (COE) · partner with external AI industry experts and select LMS platform · set baseline productivity and critical thinking KPIs.</div>
+          </div>
+          <div class="phase">
+            <div class="phase-header">
+              <div class="phase-when">6.2 · Months 2–3</div>
+              <div class="phase-what">Workflow analysis and curriculum modification</div>
+            </div>
+            <div class="phase-body">Audit current staff workflows to identify high-value AI use cases · co-design industry-specific video training modules with staff feedback.</div>
+          </div>
+          <div class="phase">
+            <div class="phase-header">
+              <div class="phase-when">6.3 · Months 4–5</div>
+              <div class="phase-what">System implementation and staff training</div>
+            </div>
+            <div class="phase-body">Launch structured training via the new LMS platform · roll out testing modules assessing technical ability and critical thinking.</div>
+          </div>
+          <div class="phase">
+            <div class="phase-header">
+              <div class="phase-when">6.4 · Month 6 +</div>
+              <div class="phase-what">Internal education and engagement</div>
+            </div>
+            <div class="phase-body">Foster a continuous human-AI co-creation culture · track KPI improvements and refine training via ongoing staff feedback.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 10b · IMPLEMENTATION DETAIL ═══ -->
+  <div class="slide slide-bg-grey" id="s10b">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">From AI Centre of Excellence to <em>continuous engagement.</em></h2>
+        <p class="section-body fi d2" style="max-width:none;">To successfully transition Capgemini staff from viewing AI as a basic productivity tool to a trusted collaborative partner, we propose a comprehensive 6-month implementation plan. This strategy integrates the establishment of an AI Center of Excellence (COE), the development of a bespoke curriculum, and the deployment of a structured Learning Management System (LMS).</p>
+        <div class="card-grid fi d3" style="grid-template-columns:1fr 1fr;gap:1rem;margin-top:.75rem;">
+          <div class="card"><div class="card-tag">6.1 · Partnership establishment (Months 1–2)</div><div class="card-body">Capgemini will form an AI Center of Excellence (COE) of cross-functional leaders to own the training and AI enablement strategy. Externally, the COE will partner with industry-leading AI experts and procure a robust LMS tailored for corporate upskilling. Baseline performance and productivity metrics will be set with clear KPIs to measure improvements in staff critical thinking and technical capabilities.</div></div>
+          <div class="card"><div class="card-tag">6.2 · Workflow analysis and curriculum (Months 2–3)</div><div class="card-body">Rather than a generic off-the-shelf solution, the training must be deeply relevant to Capgemini's specific operational menu. The COE and external experts will collaborate with staff via focus groups to analyse current bottlenecks and design an industry-specific curriculum. This phase ensures the resulting video series and course materials directly address staff concerns, demystify AI, and provide clear, compliant guidance on human-AI co-creation.</div></div>
+          <div class="card"><div class="card-tag">6.3 · System implementation and training (Months 4–5)</div><div class="card-body">With the curriculum designed, the program moves to deployment. The structured video series and interactive modules will be launched via the LMS, made accessible to all staff. Training will include practical sandbox exercises and tests evaluating both technical ability and critical thinking. Staff will learn how to prompt effectively, verify AI outputs, and confidently rely on AI for complex workflows.</div></div>
+          <div class="card red"><div class="card-tag">6.4 · Engagement and continuous improvement (Month 6 +)</div><div class="card-body">Training is not a one-off event but a continuous cultural shift. The COE will drive ongoing internal engagement campaigns to celebrate successful human-AI co-creation wins and gather continuous feedback from staff to refine the program. Effectiveness will be continuously measured against the initial KPIs, tracking company-wide productivity to ensure the training translates into genuine individual capability.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 11 · BUDGET ═══ -->
+  <div class="slide slide-bg-grey" id="s11">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Budget <em>estimation.</em></h2>
+        <p class="section-body fi d2" style="max-width:880px;">To execute this 6-month rollout effectively, the following budget covers technology, expertise, and content creation.</p>
+        <table class="budget-table fi d3" style="margin-top:.75rem;">
+          <thead>
+            <tr><th>Line item</th><th>Description</th><th class="amt">Investment</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LMS platform procurement & licensing</td><td>Enterprise licensing and initial setup</td><td class="amt">$40,000</td></tr>
+            <tr><td>External AI expert partnerships</td><td>Consulting fees for curriculum design and specialised masterclasses</td><td class="amt">$60,000</td></tr>
+            <tr><td>Content creation & video production</td><td>High-quality, Capgemini-specific video series and testing modules</td><td class="amt">$35,000</td></tr>
+            <tr><td>AI COE internal resource allocation</td><td>Internal champions, project management, and operational downtime for training</td><td class="amt">$50,000</td></tr>
+            <tr><td>Contingency fund (10%)</td><td>Risk buffer for scope movement</td><td class="amt">$18,500</td></tr>
+            <tr class="total"><td>Total estimated budget</td><td></td><td class="amt">$203,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 12 · CONCLUSION & CONTRIBUTION ═══ -->
+  <div class="slide slide-bg-grey" id="s12">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Empowering Capgemini staff to move from passive users to active <em>AI co-creators.</em></h2>
+        <div class="fi d2" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;">
+          <div>
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;">The conclusion</div>
+            <div class="card-grid" style="gap:.65rem;">
+              <div class="card"><div class="card-body">True digital transformation requires more than new tools; it requires a mindset shift.</div></div>
+              <div class="card"><div class="card-body">Our structured, 6-month LMS training program directly addresses staff hesitation by building technical ability and critical thinking.</div></div>
+              <div class="card"><div class="card-body">By establishing an AI Center of Excellence (COE), Capgemini ensures continuous, safe, and industry-relevant AI adoption.</div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;">Core contributions to Capgemini</div>
+            <div class="card-grid" style="gap:.65rem;">
+              <div class="card"><div class="card-tag">Risk mitigation</div><div class="card-body">Equips staff to confidently manage AI limitations — hallucinations, automation bias and data privacy.</div></div>
+              <div class="card"><div class="card-tag">Capability building</div><div class="card-body">Transforms human-AI co-creation into a genuine, measurable individual capability across the firm.</div></div>
+              <div class="card red"><div class="card-tag">Strategic alignment</div><div class="card-body">Directly supports the goal of delivering proactive, empathetic, and secure services to public sector clients.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="fi d3" style="background:var(--white);border-left:4px solid var(--red);padding:1.25rem 1.5rem;margin-top:1.5rem;">
+          <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem;">Closing vision</div>
+          <p style="font-family:Inter,sans-serif;font-size:1.25rem;font-weight:300;color:var(--blue);line-height:1.5;font-style:italic;margin-bottom:.4rem;">"Together we can give technology that human touch the world needs."</p>
+          <div style="font-size:.85rem;color:var(--muted);">Aiman Ezzat, CEO Capgemini</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 13 · Q&A ═══ -->
+  <div class="slide slide-bg-grey" id="s13">
+    <div class="div-slide" style="background:var(--bg);">
+      <div class="div-num" style="color:rgba(0,0,84,.06);">07</div>
+      <div class="hero-pixel-block br" aria-hidden="true">
+        <span></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span></span><span></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span></span><span></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span></span><span class="y"></span><span></span><span class="off"></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span><span></span><span class="off"></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span><span></span><span class="off"></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span><span></span>
+        <span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span></span><span></span>
+      </div>
+      <div class="div-content">
+        <h2 class="div-h fi d1" style="color:var(--blue);">Thank you. <em style="color:var(--red);">Questions?</em></h2>
+        <p class="div-sub fi d2" style="color:var(--text);">Group 1 · Capgemini · BUSM4519 Design Thinking · RMIT Executive MBA · 30 May 2026</p>
+      </div>
+    </div>
+  </div>
+
+<!-- ── BOTTOM SLIDE NAV ── -->
+<div class="slide-nav" id="slideNav">
+  <button class="snav-btn" id="prevBtn" onclick="prevSlide()" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    Prev
+  </button>
+  <div class="slide-center">
+    <div class="slide-dots" id="slideDots"></div>
+    <span class="slide-label" id="slideLabel">Hero</span>
+  </div>
+  <button class="snav-btn" id="nextBtn" onclick="nextSlide()">
+    Next
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+</div><!-- end slide-deck -->
+
+<script>
+  const SLIDES = [
+    { id:'s0',  label:'Hero',                       dark:false },
+    { id:'s1',  label:'Meet the team',              dark:false },
+    { id:'s2',  label:'Overview',                   dark:false },
+    { id:'s3',  label:'01 · Industry partner',      dark:false },
+    { id:'s4',  label:'02 · Understanding the problem', dark:false },
+    { id:'s5',  label:'03 · Goals & objectives',    dark:false },
+    { id:'s6',  label:'04 · Challenges & opportunities', dark:false },
+    { id:'s7',  label:'05 · Three solutions',       dark:false },
+    { id:'s8',  label:'05a · Pugh analysis',        dark:false },
+    { id:'s9',  label:'05b · Impact–effort',        dark:false },
+    { id:'s10', label:'06 · Implementation plan',   dark:false },
+    { id:'s10b',label:'06 · Implementation detail', dark:false },
+    { id:'s11', label:'06 · Budget',                dark:false },
+    { id:'s12', label:'07 · Conclusion',            dark:false },
+    { id:'s13', label:'Q & A',                      dark:false },
+  ];
+
+  let current = 0;
+  const slideEls = SLIDES.map(s => document.getElementById(s.id));
+  const nav = document.getElementById('slideNav');
+  const mainNav = document.getElementById('mainNav');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const slideLabel = document.getElementById('slideLabel');
+  const dotsEl = document.getElementById('slideDots');
+
+  SLIDES.forEach((s, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i===0?' active':'');
+    d.title = s.label;
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function updateNav() {
+    const s = SLIDES[current];
+    nav.className = 'slide-nav' + (s.dark ? ' dark' : '');
+    slideLabel.textContent = s.label;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === SLIDES.length - 1;
+    dotsEl.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===current));
+    mainNav.className = s.dark ? '' : 'light';
+  }
+
+  function goTo(next) {
+    if (next === current || next < 0 || next >= SLIDES.length) return;
+    const dir = next > current ? 1 : -1;
+    const outEl = slideEls[current];
+    const inEl = slideEls[next];
+
+    inEl.style.transition = 'none';
+    inEl.style.transform = `translateX(${dir * 100}%)`;
+    inEl.style.visibility = 'visible';
+    inEl.offsetHeight;
+
+    const ease = 'cubic-bezier(0.4,0,0.2,1)';
+    inEl.style.transition = `transform 0.42s ${ease}`;
+    inEl.style.transform = 'translateX(0)';
+
+    outEl.style.transition = `transform 0.42s ${ease}`;
+    outEl.style.transform = `translateX(${dir * -100}%)`;
+    outEl.classList.remove('is-active');
+    inEl.classList.add('is-active');
+
+    setTimeout(() => {
+      outEl.style.visibility = 'hidden';
+      outEl.style.transition = 'none';
+      outEl.style.transform = 'translateX(100%)';
+    }, 430);
+
+    current = next;
+    updateNav();
+
+    setTimeout(() => {
+      inEl.querySelectorAll('.fi:not(.v)').forEach(el => el.classList.add('v'));
+    }, 100);
+  }
+
+  function nextSlide() { goTo(current + 1); }
+  function prevSlide() { goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prevSlide(); }
+    else if (e.key === 'Home') { goTo(0); }
+    else if (e.key === 'End') { goTo(SLIDES.length - 1); }
+    else if (e.key === 'Escape') { closeDrawer(); }
+  });
+
+  // Trigger first-slide fade-ins
+  setTimeout(() => {
+    document.querySelectorAll('#s0 .fi').forEach(el => el.classList.add('v'));
+  }, 100);
+
+  // Drawer
+  function openDrawer() {
+    document.getElementById('navDrawer').classList.add('open');
+    document.getElementById('drawerOverlay').classList.add('open');
+  }
+  function closeDrawer() {
+    document.getElementById('navDrawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+  }
+
+  updateNav();
+</script>
+</body>
+</html>
