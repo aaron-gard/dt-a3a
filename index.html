@@ -79,7 +79,7 @@
 
   /* ── SHARED ── */
   .section-tag{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem;}
-  h2.section-title{font-family:Inter,Helvetica,Arial,sans-serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:200;color:var(--blue);line-height:1.15;letter-spacing:-.02em;margin-bottom:1.1rem;}
+  h2.section-title{font-family:Inter,Helvetica,Arial,sans-serif;font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:200;color:var(--blue);line-height:1.15;letter-spacing:-.02em;margin-bottom:.85rem;}
   h2.section-title em{font-style:normal;font-weight:600;color:var(--red);}
   .section-body{font-size:1.05rem;color:var(--text);line-height:1.75;max-width:560px;margin-bottom:1.25rem;}
 
@@ -180,6 +180,8 @@
   .pugh-table td.neg{color:var(--red);font-weight:600;}
   .pugh-table tr.total td{background:var(--red);color:var(--white);font-weight:700;border:none;}
   .pugh-table tr.total td.num{color:var(--yellow);}
+  .pugh-table .lead-col{background:rgba(230,30,42,.06);}
+  .pugh-table tr.total td.lead-col{background:#b81522;color:var(--white);}
 
   /* Impact-effort matrix */
   .matrix{position:relative;width:100%;max-width:780px;aspect-ratio:1.5/1;background:var(--bg);border:1px solid var(--border);margin:1rem auto;}
@@ -218,7 +220,7 @@
   .step-d{font-size:.9rem;color:var(--text);line-height:1.6;}
 
   /* Slide layout utilities */
-  .slide-body{padding-top:64px;padding-bottom:24px;height:100%;box-sizing:border-box;overflow-y:auto;}
+  .slide-body{padding-top:60px;padding-bottom:60px;height:100%;box-sizing:border-box;overflow-y:auto;}
   .slide-inner{max-width:1300px;margin:0 auto;padding:1.5rem 3rem;}
 
   .whats-next{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);}
@@ -548,27 +550,27 @@
         <p class="fi d2" style="color:var(--muted);font-size:1rem;margin:0 0 1rem;">A double-diamond approach — <strong style="color:var(--red);">divergence</strong> in A3a, <strong style="color:var(--blue);">convergence</strong> in A3b. Each named stage produced specific artefacts that ladder into the recommendation.</p>
         <div class="fi d3" style="display:grid;grid-template-columns:140px 1fr 1.4fr;gap:0;border-top:1px solid var(--border);">
           <div style="display:contents;">
-            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);">01 · Empathise</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;letter-spacing:.06em;text-transform:uppercase;">Diverge</div></div>
+            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);">01 · Empathise</div><span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);background:rgba(230,30,42,.08);padding:2px 8px;margin-top:.4rem;border-radius:2px;">Diverge</span></div>
             <div style="padding:1rem 1.5rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:1rem;font-weight:600;color:var(--blue);">Understand the human</div></div>
             <div style="padding:1rem 0;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.6;color:var(--text);">Capgemini brief, Jon Le Gat interview and public-domain research on staff AI adoption barriers.</div>
           </div>
           <div style="display:contents;">
-            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);">02 · Define</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;letter-spacing:.06em;text-transform:uppercase;">Diverge</div></div>
+            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);">02 · Define</div><span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);background:rgba(230,30,42,.08);padding:2px 8px;margin-top:.4rem;border-radius:2px;">Diverge</span></div>
             <div style="padding:1rem 1.5rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:1rem;font-weight:600;color:var(--blue);">Frame the problem</div></div>
             <div style="padding:1rem 0;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.6;color:var(--text);">Dual mandate, six essential human skills, HMW statement co-drafted with the team.</div>
           </div>
           <div style="display:contents;">
-            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);">03 · Ideate</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;letter-spacing:.06em;text-transform:uppercase;">Diverge</div></div>
+            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);">03 · Ideate</div><span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);background:rgba(230,30,42,.08);padding:2px 8px;margin-top:.4rem;border-radius:2px;">Diverge</span></div>
             <div style="padding:1rem 1.5rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:1rem;font-weight:600;color:var(--blue);">Generate options</div></div>
             <div style="padding:1rem 0;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.6;color:var(--text);">Divergent thinking workshop. Three solution alternatives surfaced, each addressing the HMW from a different angle.</div>
           </div>
           <div style="display:contents;">
-            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);">04 · Evaluate</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;letter-spacing:.06em;text-transform:uppercase;">Converge</div></div>
+            <div style="padding:1rem 1.25rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);">04 · Evaluate</div><span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);background:rgba(0,0,84,.08);padding:2px 8px;margin-top:.4rem;border-radius:2px;">Converge</span></div>
             <div style="padding:1rem 1.5rem 1rem 0;border-bottom:1px solid var(--border);"><div style="font-size:1rem;font-weight:600;color:var(--blue);">Weighted scoring</div></div>
             <div style="padding:1rem 0;border-bottom:1px solid var(--border);font-size:.88rem;line-height:1.6;color:var(--text);">Pugh-style decision matrix and Impact–Effort placement scored independently, then averaged across the team.</div>
           </div>
           <div style="display:contents;">
-            <div style="padding:1rem 1.25rem 1rem 0;"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);">05 · Recommend</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;letter-spacing:.06em;text-transform:uppercase;">Converge</div></div>
+            <div style="padding:1rem 1.25rem 1rem 0;"><div style="font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);">05 · Recommend</div><span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);background:rgba(0,0,84,.08);padding:2px 8px;margin-top:.4rem;border-radius:2px;">Converge</span></div>
             <div style="padding:1rem 1.5rem 1rem 0;"><div style="font-size:1rem;font-weight:600;color:var(--blue);">Converge for A3b</div></div>
             <div style="padding:1rem 0;font-size:.88rem;line-height:1.6;color:var(--text);">Integrated A + B recommendation with C as an enabling channel. Section 6 implementation plan operationalises B as the lead.</div>
           </div>
@@ -640,14 +642,14 @@
         <table class="pugh-table fi d3">
           <thead>
             <tr>
-              <th>Criterion</th><th class="num">Weight</th><th class="num">A · COE</th><th class="num">B · Bespoke training</th><th class="num">C · Expert LMS</th>
+              <th>Criterion</th><th class="num">Weight</th><th class="num">A · COE</th><th class="num lead-col">B · Bespoke <span style="color:var(--red);font-size:.65rem;letter-spacing:.18em;display:block;font-weight:700;">★ LEADS</span></th><th class="num">C · Expert LMS</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Provides a structured training program</td><td class="num">30%</td><td class="num">6.4</td><td class="num">8.0</td><td class="num">8.2</td></tr>
-            <tr><td>Builds confidence in critical thinking</td><td class="num">30%</td><td class="num">8.0</td><td class="num">7.8</td><td class="num">6.2</td></tr>
-            <tr><td>Enables co-creativity as individual capability</td><td class="num">40%</td><td class="num">9.0</td><td class="num">8.0</td><td class="num">5.4</td></tr>
-            <tr class="total"><td>Weighted total</td><td class="num">100%</td><td class="num">7.92</td><td class="num">7.94</td><td class="num">6.48</td></tr>
+            <tr><td>Provides a structured training program</td><td class="num">30%</td><td class="num">6.4</td><td class="num lead-col">8.0</td><td class="num">8.2</td></tr>
+            <tr><td>Builds confidence in critical thinking</td><td class="num">30%</td><td class="num">8.0</td><td class="num lead-col">7.8</td><td class="num">6.2</td></tr>
+            <tr><td>Enables co-creativity as individual capability</td><td class="num">40%</td><td class="num">9.0</td><td class="num lead-col">8.0</td><td class="num">5.4</td></tr>
+            <tr class="total"><td>Weighted total</td><td class="num">100%</td><td class="num">7.92</td><td class="num lead-col" style="font-size:1.05rem;">7.94</td><td class="num">6.48</td></tr>
           </tbody>
         </table>
         <p class="fi d4" style="color:var(--muted);font-size:.85rem;margin-top:1rem;font-style:italic;">B narrowly leads on balance. A scores highest on the heaviest-weighted criterion (capability). C delivers structured content efficiently but underperforms on the deeper capability outcomes — pointing to A + B as the recommendation, with C as enabling infrastructure.</p>
@@ -762,14 +764,14 @@
   <div class="slide slide-bg-grey" id="s12">
     <div class="slide-body">
       <div class="slide-inner">
-        <h2 class="section-title fi d1">Empowering Capgemini staff to move from passive users to active <em>AI co-creators.</em></h2>
+        <h2 class="section-title fi d1">From passive users to active <em>AI co-creators.</em></h2>
         <div class="fi d2" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem;">
           <div>
             <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;">The conclusion</div>
             <div class="card-grid" style="gap:.65rem;">
-              <div class="card"><div class="card-body">True digital transformation requires more than new tools; it requires a mindset shift.</div></div>
-              <div class="card"><div class="card-body">Our structured, 6-month LMS training program directly addresses staff hesitation by building technical ability and critical thinking.</div></div>
-              <div class="card"><div class="card-body">By establishing an AI Center of Excellence (COE), Capgemini ensures continuous, safe, and industry-relevant AI adoption.</div></div>
+              <div class="card"><div class="card-tag">Mindset shift</div><div class="card-body">True digital transformation requires more than new tools — it requires a culture that treats AI as a co-creator.</div></div>
+              <div class="card"><div class="card-tag">Structured training</div><div class="card-body">A 6-month LMS program directly addresses staff hesitation by building technical ability and critical thinking.</div></div>
+              <div class="card"><div class="card-tag">Sustained adoption</div><div class="card-body">An AI Centre of Excellence ensures continuous, safe and industry-relevant AI adoption beyond the rollout.</div></div>
             </div>
           </div>
           <div>
@@ -888,7 +890,7 @@
     { id:'s6',  label:'04 · Challenges & opportunities', dark:false },
     { id:'s6b', label:'04 · Our DT process',         dark:false },
     { id:'s7',  label:'05 · Three solutions',       dark:false },
-    { id:'s8',  label:'05a · Pugh analysis',        dark:false },
+    { id:'s8',  label:'05a · Decision matrix',      dark:false },
     { id:'s9',  label:'05b · Impact–effort',        dark:false },
     { id:'s10', label:'06 · Implementation plan',   dark:false },
     { id:'s10b',label:'06 · Implementation detail', dark:false },
