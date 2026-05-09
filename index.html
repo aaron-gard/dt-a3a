@@ -132,9 +132,9 @@
 
   /* Cards */
   .card-grid{display:grid;gap:1rem;}
-  .card{background:var(--white);padding:1rem 1.25rem;border-left:3px solid var(--blue);}
-  .card.red{border-left-color:var(--red);}
-  .card.yellow{border-left-color:var(--yellow);}
+  .card{background:var(--white);padding:1rem 1.25rem;border:1px solid var(--border);}
+  .card.red{border-color:var(--border);}
+  .card.yellow{border-color:var(--border);}
   .card-tag{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem;}
   .card.red .card-tag{color:var(--red);}
   .card.yellow .card-tag{color:#a07f00;}
@@ -142,7 +142,7 @@
 
   /* Team grid */
   .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;padding:1.5rem 3rem;}
-  .team-card{background:var(--white);padding:1.5rem 1rem;text-align:center;border-top:3px solid var(--red);}
+  .team-card{background:var(--white);padding:1.5rem 1rem;text-align:center;border:1px solid var(--border);}
   .team-photo{width:96px;height:96px;border-radius:50%;background:var(--blue);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:Inter,sans-serif;font-size:1.75rem;font-weight:300;background-size:cover;background-position:center top;overflow:hidden;}
   .team-photo[style*="background-image"]{color:transparent;font-size:0;}
   .team-name{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:500;color:var(--blue);margin-bottom:.25rem;}
@@ -151,7 +151,7 @@
 
   /* Overview pills */
   .overview-list{display:flex;flex-direction:column;gap:.6rem;}
-  .ov-row{display:grid;grid-template-columns:64px 1fr 120px;align-items:stretch;background:var(--white);border-left:3px solid var(--red);min-height:56px;}
+  .ov-row{display:grid;grid-template-columns:64px 1fr 120px;align-items:stretch;background:var(--white);border:1px solid var(--border);min-height:56px;}
   .ov-num{background:var(--blue);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:.04em;}
   .ov-label{display:flex;align-items:center;padding:0 1.25rem;font-size:1.02rem;font-weight:500;color:var(--blue);}
   .ov-who{display:flex;align-items:center;justify-content:flex-end;padding:0 1.5rem;font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
@@ -163,7 +163,7 @@
 
   /* Solution cards */
   .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-  .sol-card{background:var(--white);padding:1.5rem;border-top:4px solid var(--red);display:flex;flex-direction:column;gap:.85rem;}
+  .sol-card{background:var(--white);padding:1.5rem;border:1px solid var(--border);display:flex;flex-direction:column;gap:.85rem;}
   .sol-tag{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);}
   .sol-name{font-family:Inter,sans-serif;font-size:1.5rem;font-weight:300;color:var(--blue);line-height:1.2;letter-spacing:-.01em;}
   .sol-desc{font-size:.95rem;color:var(--text);line-height:1.6;}
@@ -195,7 +195,7 @@
 
   /* Timeline */
   .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
-  .phase{background:var(--white);display:flex;flex-direction:column;border-top:4px solid var(--red);}
+  .phase{background:var(--white);display:flex;flex-direction:column;border:1px solid var(--border);}
   .phase-header{padding:1rem 1.25rem .5rem;}
   .phase-when{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;}
   .phase-what{font-family:Inter,sans-serif;font-size:1.05rem;font-weight:500;line-height:1.3;color:var(--blue);}
@@ -211,7 +211,7 @@
 
   /* Next steps */
   .step-list{display:flex;flex-direction:column;gap:.75rem;}
-  .step{display:grid;grid-template-columns:80px 1fr;background:var(--white);border-left:3px solid var(--red);}
+  .step{display:grid;grid-template-columns:80px 1fr;background:var(--white);border:1px solid var(--border);}
   .step-num{background:var(--red);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:1.75rem;font-weight:300;}
   .step-body{padding:1rem 1.5rem;}
   .step-h{font-family:Inter,sans-serif;font-size:1.2rem;font-weight:500;color:var(--blue);margin-bottom:.3rem;}
@@ -261,20 +261,21 @@
   <div class="drawer-section">Diagnosis</div>
   <div class="drawer-link" onclick="goTo(3);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>Industry partner</div>
   <div class="drawer-link" onclick="goTo(4);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>Understanding the problem</div>
-  <div class="drawer-link" onclick="goTo(5);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Goals & objectives</div>
-  <div class="drawer-link" onclick="goTo(6);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v2m0 4h.01M5 19h14a2 2 0 001.732-3L13.732 4a2 2 0 00-3.464 0L3.34 16a2 2 0 001.732 3z"/></svg>Challenges & opportunities</div>
+  <div class="drawer-link" onclick="goTo(5);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>Essential human skills</div>
+  <div class="drawer-link" onclick="goTo(6);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Goals & objectives</div>
+  <div class="drawer-link" onclick="goTo(7);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v2m0 4h.01M5 19h14a2 2 0 001.732-3L13.732 4a2 2 0 00-3.464 0L3.34 16a2 2 0 001.732 3z"/></svg>Challenges & opportunities</div>
   <div class="drawer-divider"></div>
   <div class="drawer-section">Solutions</div>
-  <div class="drawer-link" onclick="goTo(7);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Three solutions</div>
-  <div class="drawer-link" onclick="goTo(8);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>Pugh analysis</div>
-  <div class="drawer-link" onclick="goTo(9);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><circle cx="8" cy="14" r="2"/><circle cx="14" cy="9" r="2"/><circle cx="18" cy="6" r="2"/></svg>Impact–effort</div>
+  <div class="drawer-link" onclick="goTo(8);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Three solutions</div>
+  <div class="drawer-link" onclick="goTo(9);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>Pugh analysis</div>
+  <div class="drawer-link" onclick="goTo(10);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><circle cx="8" cy="14" r="2"/><circle cx="14" cy="9" r="2"/><circle cx="18" cy="6" r="2"/></svg>Impact–effort</div>
   <div class="drawer-divider"></div>
   <div class="drawer-section">Execute</div>
-  <div class="drawer-link" onclick="goTo(10);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Implementation plan</div>
-  <div class="drawer-link" onclick="goTo(11);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg>Implementation detail</div>
-  <div class="drawer-link" onclick="goTo(12);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>Budget</div>
-  <div class="drawer-link" onclick="goTo(13);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Conclusion</div>
-  <div class="drawer-link" onclick="goTo(14);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>Q&A</div>
+  <div class="drawer-link" onclick="goTo(11);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Implementation plan</div>
+  <div class="drawer-link" onclick="goTo(12);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg>Implementation detail</div>
+  <div class="drawer-link" onclick="goTo(13);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>Budget</div>
+  <div class="drawer-link" onclick="goTo(14);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Conclusion</div>
+  <div class="drawer-link" onclick="goTo(15);closeDrawer()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>Q&A</div>
   <div style="margin-top:auto;padding:1.5rem;border-top:1px solid rgba(255,255,255,.08)">
     <div style="font-size:.62rem;color:rgba(255,255,255,.35);line-height:1.8">BUSM4519 Design Thinking · Assessment 3a<br>Group 1 · Capgemini · 30 May 2026</div>
   </div>
@@ -345,7 +346,7 @@
           <div class="team-bio">Owns the three alternatives and the comparative scoring.</div>
         </div>
         <div class="team-card">
-          <div class="team-photo">A</div>
+          <div class="team-photo" style="background-image:url('img/ash.jpg');background-size:cover;background-position:center top;"></div>
           <div class="team-name">Ash</div>
           <div class="team-role">Implementation & timeline</div>
           <div class="team-bio">Shapes the rollout plan, KPIs and budget.</div>
@@ -375,19 +376,18 @@
   <!-- ═══ 3 · INDUSTRY PARTNER ═══ -->
   <div class="slide slide-bg-grey" id="s3">
     <div class="two-col" style="padding-top:64px;grid-template-columns:38% 62%;">
-      <div class="col-media" style="background:var(--bg);position:relative;border-right:1px solid var(--border);">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-          <div style="text-align:center;">
-            <div style="display:inline-block;background:var(--white);border:1px dashed var(--grey-mid);padding:1.25rem 2rem;border-radius:4px;margin-bottom:1.25rem;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);">[ Partner logo ]</div>
-            <div style="font-family:Inter,sans-serif;font-size:2.1rem;font-weight:200;color:var(--blue);letter-spacing:.04em;">Capgemini</div>
-            <div style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:.5rem;font-weight:600;">Australia</div>
-          </div>
-        </div>
+      <div class="col-media" style="background:#0070AD;position:relative;border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:3rem;">
+        <img src="img/capgemini-white.svg" alt="Capgemini" style="width:80%;max-width:340px;height:auto;display:block;">
       </div>
       <div class="col-text">
         <h2 class="section-title fi d1">Capgemini <em>Australia.</em></h2>
-        <p class="section-body fi d2" style="max-width:none;">Capgemini is a global consulting, technology, and digital transformation company that helps organisations solve complex problems through the smart use of technology.</p>
-        <p class="section-body fi d3" style="max-width:none;">In Australia, they work across finance, telecommunications, government, and energy, providing expertise in cloud, data, AI, and digital solutions.</p>
+        <p class="section-body fi d2" style="max-width:none;">Capgemini is a global leader in consulting, digital transformation, technology and engineering services, with around 340,000 people across more than 50 countries. The firm helps organisations accelerate their dual transition to a digital and sustainable world while creating tangible business and societal impact.</p>
+        <p class="section-body fi d3" style="max-width:none;">In Australia, Capgemini partners with leading enterprises and government agencies across financial services, telecommunications, public sector, energy and utilities. Local teams deliver expertise in cloud, data and AI, cybersecurity, customer experience and intelligent industry — combining deep sector knowledge with the scale and innovation of the global Capgemini network.</p>
+        <p class="section-body fi d4" style="max-width:none;">As AI moves from experimentation to enterprise adoption, Capgemini's people are the front line: every client engagement is shaped by how confidently and ethically their staff can co-create with AI. That capability uplift is the focus of this design challenge.</p>
+        <div class="fi d5" style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;gap:2rem;flex-wrap:wrap;font-size:.85rem;line-height:1.6;">
+          <div><div style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;">Industry partner contact</div><div style="color:var(--blue);font-weight:600;">Jon Le Gat</div><div style="color:var(--muted);">Vice President · Head of Public Sector</div></div>
+          <div><div style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;">Background interview</div><div style="color:var(--blue);font-weight:600;">A/Prof. Kevin Argus × Jon Le Gat</div><div style="color:var(--muted);">RMIT MBA Program Director</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -397,8 +397,44 @@
     <div class="slide-body">
       <div class="slide-inner">
         <h2 class="section-title fi d1">Understanding the <em>problem.</em></h2>
-        <p class="section-body fi d2" style="max-width:880px;">Capgemini is operating in a rapidly evolving AI landscape, but staff currently use AI only for basic tasks due to limited trust, unclear guidance, and organisational constraints. To enable deeper adoption, Capgemini must help employees move from seeing AI as a simple productivity tool to treating it as a reliable collaborative partner that supports real workflows.</p>
-        <p class="section-body fi d3" style="max-width:880px;">This analysis will focus on staff perceptions, aiming to identify their concerns and areas of hesitation.</p>
+        <p class="section-body fi d2" style="max-width:880px;">AI marks the Fourth Industrial Revolution. What distinguishes it from previous shifts is a <strong style="color:var(--blue);font-weight:600;">dual transformation</strong> — it amplifies productivity <em>and</em> ignites an intelligence revolution that reshapes human roles and the competencies required to thrive.</p>
+        <p class="section-body fi d3" style="max-width:880px;">For Capgemini, the value of AI lies not in replacing people but in <strong style="color:var(--blue);font-weight:600;">augmenting creativity</strong>. Merging human intuition with AI's computational power unlocks novel solutions for end users — but only if staff are equipped to lead that integration.</p>
+        <div class="fi d4" style="margin-top:1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+          <div style="background:var(--white);border:1px solid var(--border);padding:1.25rem;">
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;">The dual mandate</div>
+            <div style="font-size:.95rem;line-height:1.6;color:var(--text);">Harness AI's automation and efficiency <strong style="color:var(--blue);font-weight:600;">while</strong> cultivating the irreplaceable human skills that keep outcomes resonant for end users.</div>
+          </div>
+          <div style="background:var(--white);border:1px solid var(--border);padding:1.25rem;">
+            <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;">Human-AI co-creativity</div>
+            <div style="font-size:.95rem;line-height:1.6;color:var(--text);">The integration of human and AI capabilities to collaboratively design products, processes and services that address end users' aspirations and pain points.</div>
+          </div>
+        </div>
+        <div class="fi d5" style="margin-top:1.25rem;padding:1rem 1.25rem;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--red);">
+          <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;">Two objectives from the brief</div>
+          <div style="font-size:.95rem;line-height:1.7;color:var(--text);">
+            <strong style="color:var(--blue);font-weight:600;">1.</strong> Identify and map the essential <strong style="color:var(--blue);font-weight:600;">human skills</strong> for human-AI co-creativity.<br>
+            <strong style="color:var(--blue);font-weight:600;">2.</strong> Design a <strong style="color:var(--blue);font-weight:600;">training program</strong> that empowers staff to integrate AI into their creative processes.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 4b · ESSENTIAL HUMAN SKILLS (OBJECTIVE 1) ═══ -->
+  <div class="slide slide-bg-grey" id="s4b">
+    <div class="slide-body">
+      <div class="slide-inner">
+        <h2 class="section-title fi d1">Essential <em>human skills</em> for co-creativity.</h2>
+        <p class="fi d2" style="color:var(--muted);font-size:1rem;margin:0 0 1.25rem;max-width:880px;">Objective 1 — the foundational human capabilities that make AI-augmented work technically efficient <em>and</em> deeply resonant with end users.</p>
+        <div class="card-grid fi d3" style="grid-template-columns:repeat(3,1fr);gap:.75rem;">
+          <div class="card"><div class="card-tag">Creative intuition</div><div class="card-body">Sensing what will resonate before the data confirms it — the spark AI cannot originate.</div></div>
+          <div class="card"><div class="card-tag">Empathy with end users</div><div class="card-body">Understanding aspirations and pain points beyond what prompts and datasets can capture.</div></div>
+          <div class="card"><div class="card-tag">Critical evaluation</div><div class="card-body">Judging AI output for accuracy, bias and fit — accountability stays with the human.</div></div>
+          <div class="card"><div class="card-tag">Curious questioning</div><div class="card-body">Framing the right problem and the right prompt — the quality of the question shapes the answer.</div></div>
+          <div class="card"><div class="card-tag">Ethical judgement</div><div class="card-body">Navigating risk, compliance and client trust where rules don't yet exist.</div></div>
+          <div class="card"><div class="card-tag">Collaborative iteration</div><div class="card-body">Working <em>with</em> AI as a creative partner — refining, redirecting, co-authoring at pace.</div></div>
+        </div>
+        <div class="fi d4" style="margin-top:1rem;font-size:.8rem;color:var(--muted);font-style:italic;">These six capabilities frame the training program that follows.</div>
       </div>
     </div>
   </div>
@@ -409,7 +445,7 @@
       <div class="slide-inner">
         <h2 class="section-title fi d1">Our <em>strategic goal</em> — and what we'll measure.</h2>
         <div class="fi d2" style="display:grid;grid-template-columns:1fr 1.3fr;gap:1.5rem;margin-top:1rem;">
-          <div style="background:var(--white);border-top:4px solid var(--red);padding:1.75rem;display:flex;flex-direction:column;justify-content:center;">
+          <div style="background:var(--white);border:1px solid var(--border);padding:1.75rem;display:flex;flex-direction:column;justify-content:center;">
             <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;">Strategic goal</div>
             <p style="font-family:Inter,sans-serif;font-size:1.45rem;font-weight:300;line-height:1.4;margin-bottom:1.25rem;color:var(--blue);">[ One sentence: the future state we are building toward for Capgemini staff. ]</p>
             <div style="border-top:1px solid var(--border);padding-top:1rem;font-size:.85rem;line-height:1.7;color:var(--text);">
@@ -664,7 +700,7 @@
             </div>
           </div>
         </div>
-        <div class="fi d3" style="background:var(--white);border-left:4px solid var(--red);padding:1.25rem 1.5rem;margin-top:1.5rem;">
+        <div class="fi d3" style="background:var(--white);border:1px solid var(--border);padding:1.25rem 1.5rem;margin-top:1.5rem;">
           <div style="font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem;">Closing vision</div>
           <p style="font-family:Inter,sans-serif;font-size:1.25rem;font-weight:300;color:var(--blue);line-height:1.5;font-style:italic;margin-bottom:.4rem;">"Together we can give technology that human touch the world needs."</p>
           <div style="font-size:.85rem;color:var(--muted);">Aiman Ezzat, CEO Capgemini</div>
@@ -718,6 +754,7 @@
     { id:'s2',  label:'Overview',                   dark:false },
     { id:'s3',  label:'01 · Industry partner',      dark:false },
     { id:'s4',  label:'02 · Understanding the problem', dark:false },
+    { id:'s4b', label:'02 · Essential human skills', dark:false },
     { id:'s5',  label:'03 · Goals & objectives',    dark:false },
     { id:'s6',  label:'04 · Challenges & opportunities', dark:false },
     { id:'s7',  label:'05 · Three solutions',       dark:false },
