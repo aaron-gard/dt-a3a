@@ -91,7 +91,7 @@
   @media(max-width:800px){.two-col{grid-template-columns:1fr;}.col-media{min-height:240px}}
 
   /* Light backgrounds */
-  .slide-bg-grey{background:var(--bg);}
+  .slide-bg-grey{background:var(--white);}
   .slide-bg-white{background:var(--white);}
   .slide-bg-blue{background:var(--blue);}
   .slide-bg-red{background:var(--red);}
@@ -132,7 +132,7 @@
 
   /* Cards */
   .card-grid{display:grid;gap:1rem;}
-  .card{background:var(--white);padding:1rem 1.25rem;border:1px solid var(--border);}
+  .card{background:var(--bg);padding:1rem 1.25rem;border:1px solid var(--border);}
   .card.red{border-color:var(--border);}
   .card.yellow{border-color:var(--border);}
   .card-tag{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem;}
@@ -142,7 +142,7 @@
 
   /* Team grid */
   .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;padding:1.5rem 3rem;}
-  .team-card{background:var(--white);padding:1.5rem 1rem;text-align:center;border:1px solid var(--border);}
+  .team-card{background:var(--bg);padding:1.5rem 1rem;text-align:center;border:1px solid var(--border);}
   .team-photo{width:96px;height:96px;border-radius:50%;background:var(--blue);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:Inter,sans-serif;font-size:1.75rem;font-weight:300;background-size:cover;background-position:center top;overflow:hidden;}
   .team-photo[style*="background-image"]{color:transparent;font-size:0;}
   .team-name{font-family:Inter,sans-serif;font-size:1.15rem;font-weight:500;color:var(--blue);margin-bottom:.25rem;}
@@ -151,7 +151,7 @@
 
   /* Overview pills */
   .overview-list{display:flex;flex-direction:column;gap:.6rem;}
-  .ov-row{display:grid;grid-template-columns:64px 1fr 120px;align-items:stretch;background:var(--white);border:1px solid var(--border);min-height:56px;}
+  .ov-row{display:grid;grid-template-columns:64px 1fr 120px;align-items:stretch;background:var(--bg);border:1px solid var(--border);min-height:56px;}
   .ov-num{background:var(--blue);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-size:1.05rem;font-weight:600;letter-spacing:.04em;}
   .ov-label{display:flex;align-items:center;padding:0 1.25rem;font-size:1.02rem;font-weight:500;color:var(--blue);}
   .ov-who{display:flex;align-items:center;justify-content:flex-end;padding:0 1.5rem;font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
@@ -163,15 +163,15 @@
 
   /* Solution cards */
   .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-  .sol-card{background:var(--white);padding:1.5rem;border:1px solid var(--border);display:flex;flex-direction:column;gap:.85rem;}
+  .sol-card{background:var(--bg);padding:1.5rem;border:1px solid var(--border);display:flex;flex-direction:column;gap:.85rem;}
   .sol-tag{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);}
   .sol-name{font-family:Inter,sans-serif;font-size:1.5rem;font-weight:300;color:var(--blue);line-height:1.2;letter-spacing:-.01em;}
   .sol-desc{font-size:.95rem;color:var(--text);line-height:1.6;}
   .sol-meta{display:flex;gap:.4rem;margin-top:auto;flex-wrap:wrap;padding-top:.75rem;border-top:1px solid var(--border);}
-  .sol-pill{background:var(--bg);padding:.3rem .6rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border-radius:2px;}
+  .sol-pill{background:var(--white);padding:.3rem .6rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border-radius:2px;}
 
   /* Pugh table */
-  .pugh-table{width:100%;border-collapse:collapse;background:var(--white);font-size:.92rem;}
+  .pugh-table{width:100%;border-collapse:collapse;background:var(--bg);font-size:.92rem;}
   .pugh-table th{background:var(--blue);color:var(--white);padding:.85rem .75rem;text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;}
   .pugh-table th.num{text-align:center;}
   .pugh-table td{padding:.65rem .75rem;border-bottom:1px solid var(--border);color:var(--text);}
@@ -182,7 +182,7 @@
   .pugh-table tr.total td.num{color:var(--yellow);}
 
   /* Impact-effort matrix */
-  .matrix{position:relative;width:100%;max-width:780px;aspect-ratio:1.5/1;background:var(--white);border:1px solid var(--border);margin:1rem auto;}
+  .matrix{position:relative;width:100%;max-width:780px;aspect-ratio:1.5/1;background:var(--bg);border:1px solid var(--border);margin:1rem auto;}
   .matrix::before,.matrix::after{content:'';position:absolute;background:var(--grey-mid);}
   .matrix::before{left:50%;top:0;bottom:0;width:1px;}
   .matrix::after{top:50%;left:0;right:0;height:1px;}
@@ -195,14 +195,14 @@
 
   /* Timeline */
   .phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
-  .phase{background:var(--white);display:flex;flex-direction:column;border:1px solid var(--border);}
+  .phase{background:var(--bg);display:flex;flex-direction:column;border:1px solid var(--border);}
   .phase-header{padding:1rem 1.25rem .5rem;}
   .phase-when{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;}
   .phase-what{font-family:Inter,sans-serif;font-size:1.05rem;font-weight:500;line-height:1.3;color:var(--blue);}
   .phase-body{padding:.5rem 1.25rem 1.25rem;font-size:.88rem;color:var(--text);line-height:1.6;border-top:1px solid var(--border);margin:0 1.25rem;padding-left:0;padding-right:0;padding-top:.85rem;}
 
   /* Budget */
-  .budget-table{width:100%;border-collapse:collapse;background:var(--white);}
+  .budget-table{width:100%;border-collapse:collapse;background:var(--bg);}
   .budget-table th{background:var(--blue);color:var(--white);padding:.9rem 1rem;text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;}
   .budget-table th.amt{text-align:right;}
   .budget-table td{padding:.85rem 1rem;border-bottom:1px solid var(--border);color:var(--text);font-size:.95rem;}
