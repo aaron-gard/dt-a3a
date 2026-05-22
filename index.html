@@ -211,7 +211,7 @@
   .pugh-table tr.total td.lead-col{background:#B2161F;color:var(--white)}
 
   /* Impact-effort matrix */
-  .matrix{position:relative;width:55%;aspect-ratio:1.5/1;background:var(--bg);border:1px solid var(--border);margin:1rem auto 2.5rem}
+  .matrix{position:relative;width:100%;aspect-ratio:1.5/1;background:var(--bg);border:1px solid var(--border);margin:1rem auto 2.5rem}
   .matrix::before,.matrix::after{content:'';position:absolute;background:var(--grey-mid)}
   .matrix::before{left:50%;top:0;bottom:0;width:1px}
   .matrix::after{top:50%;left:0;right:0;height:1px}
@@ -649,23 +649,29 @@
     <div class="slide-body">
       <div class="slide-inner">
         <h2 class="section-title fi d1">Impact–effort <em>matrix.</em></h2>
-        <div class="matrix fi d3" style="margin-left:2.5rem;">
-          <div class="quad-l tl">High impact<br><small>Low effort</small></div>
-          <div class="quad-l tr">Strategic<br><small>investments</small></div>
-          <div class="quad-l bl">Low priority</div>
-          <div class="quad-l br">Resource<br><small>heavy</small></div>
-          <div class="axis-y">Impact</div>
-          <div class="axis-x">Effort</div>
-          <div class="dot-plot" style="left:65%;top:15%;">A</div>
-          <div class="dot-plot" style="left:38%;top:22%;background:var(--red);box-shadow:0 4px 20px rgba(230,30,42,.45);">B</div>
-          <div class="dot-plot" style="left:25%;top:60%;background:var(--muted);box-shadow:0 4px 12px rgba(64,64,118,.3);">C</div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center;">
+          <div>
+            <div class="matrix fi d3" style="width:100%;margin:0;">
+              <div class="quad-l tl">High impact<br><small>Low effort</small></div>
+              <div class="quad-l tr">Strategic<br><small>investments</small></div>
+              <div class="quad-l bl">Low priority</div>
+              <div class="quad-l br">Resource<br><small>heavy</small></div>
+              <div class="axis-y">Impact</div>
+              <div class="axis-x">Effort</div>
+              <div class="dot-plot" style="left:65%;top:15%;">A</div>
+              <div class="dot-plot" style="left:38%;top:22%;background:var(--red);box-shadow:0 4px 20px rgba(230,30,42,.45);">B</div>
+              <div class="dot-plot" style="left:25%;top:60%;background:var(--muted);box-shadow:0 4px 12px rgba(64,64,118,.3);">C</div>
+            </div>
+          </div>
+          <div>
+            <div class="fi d4" style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.25rem;">
+              <div style="display:flex;align-items:center;gap:.5rem;"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--red);"></span><span style="font-size:.875rem;color:var(--text);">A · AI Centre of Excellence</span></div>
+              <div style="display:flex;align-items:center;gap:.5rem;"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--red);"></span><span style="font-size:.875rem;color:var(--text);">B · Bespoke Training</span></div>
+              <div style="display:flex;align-items:center;gap:.5rem;"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--muted);"></span><span style="font-size:.875rem;color:var(--text);">C · Expert-led LMS</span></div>
+            </div>
+            <p class="fi d4" style="color:var(--muted);font-size:1rem;margin:0;font-style:italic;line-height:1.55;">B and A occupy the higher-impact quadrant. C is the lightest lift but lower impact, suggesting a role as enabling infrastructure rather than standalone strategy.</p>
+          </div>
         </div>
-        <div class="fi d4" style="display:flex;gap:2rem;margin-top:.75rem;flex-wrap:wrap;">
-          <div style="display:flex;align-items:center;gap:.5rem;"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--red);"></span><span style="font-size:.875rem;color:var(--text);">A · AI Centre of Excellence</span></div>
-          <div style="display:flex;align-items:center;gap:.5rem;"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--red);"></span><span style="font-size:.875rem;color:var(--text);">B · Bespoke Training</span></div>
-          <div style="display:flex;align-items:center;gap:.5rem;"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--muted);"></span><span style="font-size:.875rem;color:var(--text);">C · Expert-led LMS</span></div>
-        </div>
-        <p class="fi d4" style="color:var(--muted);font-size:1rem;margin-top:1rem;font-style:italic;">B and A occupy the higher-impact quadrant. C is the lightest lift but lower impact, suggesting a role as enabling infrastructure rather than standalone strategy.</p>
       </div>
     </div>
   </div>
