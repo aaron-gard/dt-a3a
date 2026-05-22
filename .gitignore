@@ -1,0 +1,8 @@
+# Source/backup video files not used in the deck
+videos/*.bak
+videos/karen.mp4
+videos/karen-tight.mp4
+videos/WIN_*.mp4
+videos/Ash (Transition*).mp4
+videos/Dave Script.txt
+.DS_Store
