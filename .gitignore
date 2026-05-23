@@ -9,3 +9,6 @@ videos/Dave Script.txt
 videos/Rachael - *.mov
 videos/*.bak.mp4
 videos/*.1.1x.bak.mp4
+# Final rendered submission (too large for git)
+final-upload.mov
+final-upload.mp4

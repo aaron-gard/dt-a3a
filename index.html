@@ -321,7 +321,9 @@
 <div class="slide-deck">
 
   <!-- ═══ 0 · HERO ═══ -->
-  <div class="slide is-active slide-bg-white" data-no-stamp id="s0">
+  <div class="slide is-active" data-no-stamp id="sBlank" style="background:#000;cursor:pointer;" onclick="startDeck()"></div>
+
+  <div class="slide slide-bg-white" data-no-stamp id="s0">
     <div class="hero-slide" style="background:var(--white);">
       <div class="hero-bg" style="background:linear-gradient(135deg,#ffffff 0%,#F5F5F2 100%);"></div>
       <img src="img/rmit-pixel-red.png" alt="" aria-hidden="true" style="position:absolute;top:80px;right:48px;width:160px;height:auto;opacity:.92;z-index:1;">
@@ -347,34 +349,34 @@
         <p class="fi d2" style="color:var(--muted);font-size:1rem;margin:0 0 1.5rem;">RMIT consulting team · Executive MBA, MC162</p>
         <div class="team-grid fi d3">
           <div class="team-card">
-            <div class="team-photo" style="background-image:url('img/karen.jpg');background-size:cover;background-position:center top;"></div>
-            <div class="team-name">Karen</div>
-            <div class="team-role">Problem lead</div>
-            <div class="team-bio">Frames the business problem and the human need behind it.</div>
-          </div>
-          <div class="team-card">
             <div class="team-photo" style="background-image:url('img/rachel.jpg');background-size:cover;background-position:center top;"></div>
             <div class="team-name">Rachael</div>
-            <div class="team-role">Goals & objectives</div>
-            <div class="team-bio">Defines the strategic goal and the measurable outcomes.</div>
+            <div class="team-role">Intro, overview & next steps</div>
+            <div class="team-bio">Opens the deck, walks the overview and approach, and closes with next steps.</div>
+          </div>
+          <div class="team-card">
+            <div class="team-photo" style="background-image:url('img/karen.jpg');background-size:cover;background-position:center top;"></div>
+            <div class="team-name">Karen</div>
+            <div class="team-role">Industry partner & problem</div>
+            <div class="team-bio">Introduces Capgemini and frames the problem we are solving.</div>
           </div>
           <div class="team-card">
             <div class="team-photo" style="background-image:url('img/aaron.jpg');background-size:cover;background-position:center top;"></div>
             <div class="team-name">Aaron</div>
-            <div class="team-role">Challenges & opportunities</div>
-            <div class="team-bio">Surfaces the constraints, the unknowns and the upside.</div>
+            <div class="team-role">Goals, challenges & opportunities</div>
+            <div class="team-bio">Sets the strategic goal and requirements, then the challenges and opportunities.</div>
           </div>
           <div class="team-card">
             <div class="team-photo" style="background-image:url('img/dave.jpg');background-size:cover;background-position:center top;"></div>
             <div class="team-name">Dave</div>
-            <div class="team-role">Solutions & strategy</div>
-            <div class="team-bio">Owns the three alternatives and the comparative scoring.</div>
+            <div class="team-role">Solutions & evaluation</div>
+            <div class="team-bio">Owns the three solutions, the impact-effort view and the decision matrix.</div>
           </div>
           <div class="team-card">
             <div class="team-photo" style="background-image:url('img/ash.jpg');background-size:cover;background-position:center top;"></div>
             <div class="team-name">Ash</div>
-            <div class="team-role">Implementation & timeline</div>
-            <div class="team-bio">Shapes the rollout plan, KPIs and budget.</div>
+            <div class="team-role">Implementation & budget</div>
+            <div class="team-bio">Lays out the implementation plan and the budget.</div>
           </div>
         </div>
       </div>
@@ -438,14 +440,11 @@
       <div class="slide-inner">
         <h2 class="section-title fi d1">Presentation <em>overview.</em></h2>
         <div class="overview-list fi d3">
-          <div class="ov-row"><div class="ov-num">01</div><div class="ov-label"><strong>Introduction</strong></div><div class="ov-who">TBC</div></div>
-          <div class="ov-row"><div class="ov-num">05</div><div class="ov-label"><strong>Industry partner</strong></div><div class="ov-who">Karen</div></div>
-          <div class="ov-row"><div class="ov-num">06</div><div class="ov-label"><strong>Understanding the problem</strong></div><div class="ov-who">Karen</div></div>
-          <div class="ov-row"><div class="ov-num">07</div><div class="ov-label"><strong>Goals & strategic requirements</strong></div><div class="ov-who">Rachael</div></div>
-          <div class="ov-row"><div class="ov-num">08</div><div class="ov-label"><strong>Challenges & opportunities</strong></div><div class="ov-who">Aaron</div></div>
-          <div class="ov-row"><div class="ov-num">09</div><div class="ov-label"><strong>Proposed solutions</strong></div><div class="ov-who">Dave</div></div>
-          <div class="ov-row"><div class="ov-num">12</div><div class="ov-label"><strong>Implementation & budget</strong></div><div class="ov-who">Ash</div></div>
-          <div class="ov-row"><div class="ov-num">14</div><div class="ov-label"><strong>Next steps</strong></div><div class="ov-who">Rachael</div></div>
+          <div class="ov-row"><div class="ov-num">01</div><div class="ov-label"><strong>Industry partner &amp; problem</strong></div><div class="ov-who">Karen</div></div>
+          <div class="ov-row"><div class="ov-num">02</div><div class="ov-label"><strong>Goals, challenges &amp; opportunities</strong></div><div class="ov-who">Aaron</div></div>
+          <div class="ov-row"><div class="ov-num">03</div><div class="ov-label"><strong>Solutions &amp; evaluation</strong></div><div class="ov-who">Dave</div></div>
+          <div class="ov-row"><div class="ov-num">04</div><div class="ov-label"><strong>Implementation &amp; budget</strong></div><div class="ov-who">Ash</div></div>
+          <div class="ov-row"><div class="ov-num">05</div><div class="ov-label"><strong>Next steps</strong></div><div class="ov-who">Rachael</div></div>
         </div>
       </div>
     </div>
@@ -792,7 +791,6 @@
             <ul style="font-size:.875rem;line-height:1.7;color:var(--text);margin:0;padding-left:1.1rem;">
               <li>Human authorship of the HMW, criteria, weights and scores</li>
               <li>Critical evaluation of every AI-generated suggestion before adoption</li>
-              <li>No private or sensitive Capgemini data passed to public AI tools</li>
               <li>Final recommendation owned and signed off by the team</li>
             </ul>
           </div>
@@ -859,6 +857,7 @@
 
 <script>
   const SLIDES = [
+    { id:'sBlank', label:'00 · Starting',                speaker:'—',        dark:true,  hideChrome:true },
     { id:'s0',   label:'01 · Hero',                       speaker:'Rachael',   dark:false },
     { id:'s2',   label:'02 · Overview',                    speaker:'Rachael',   dark:false },
     { id:'s1',   label:'03 · Meet the team',               speaker:'Rachael',   dark:false },
@@ -903,7 +902,18 @@
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === SLIDES.length - 1;
     dotsEl.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===current));
-    mainNav.className = s.dark ? '' : 'light'}
+    mainNav.className = s.dark ? '' : 'light';
+    // Hide all chrome on slides flagged hideChrome (blank intro)
+    const hide = !!s.hideChrome;
+    document.body.style.background = hide ? '#000' : '';
+    nav.style.display = hide ? 'none' : '';
+    mainNav.style.display = hide ? 'none' : '';
+    const drawer = document.getElementById('navDrawer');
+    const drawerOv = document.getElementById('drawerOverlay');
+    if (drawer) drawer.style.display = hide ? 'none' : '';
+    if (drawerOv) drawerOv.style.display = hide ? 'none' : '';
+    if (narrationBubble) narrationBubble.style.display = hide ? 'none' : (s.noBubble || !NARRATION[current]) ? 'none' : '';
+  }
 
   function goTo(next) {
     if (next === current || next < 0 || next >= SLIDES.length) return;
@@ -1003,38 +1013,37 @@
   // One clip per slide. Each plays in the bubble; deck does not auto-advance.
   // Keys are slide indices in the SLIDES array.
   const NARRATION = {
-    0: { src: 'videos/Rachael - introduction.mp4' },           // Hero
-    1: { src: 'videos/Rachael - presentation overview.mp4' },  // Overview
-    2: { src: 'videos/Rachael - meet the team.mp4' },          // Meet the team
-    3: { src: 'videos/Rachael - our approach.mp4' },           // Our approach
-    // Karen — single clip covering Industry partner (4) → Problem (5)
-    // NOTE: karen-final.mp4 was originally cut for 3 slides incl. archived Skills slide.
-    // Needs re-trim — audio after 180.45s relates to the archived Skills slide.
-    4: { src: 'videos/karen-final.mp4', startSlide: 4,
+    0: { src: 'videos/black-5s.mp4' },                         // Blank 5s intro
+    1: { src: 'videos/Rachael - introduction.mp4' },           // Hero
+    2: { src: 'videos/Rachael - presentation overview.mp4' },  // Overview
+    3: { src: 'videos/Rachael - meet the team.mp4' },          // Meet the team
+    4: { src: 'videos/Rachael - our approach.mp4' },           // Our approach
+    // Karen — single clip covering Industry partner (5) → Problem (6)
+    5: { src: 'videos/karen-final.mp4', startSlide: 5,
          cues: [
-           { at: 47.2, goTo: 5 },
+           { at: 47.2, goTo: 6 },
          ] },
-    5: { ref: 4 },
-    // Aaron — Goals & strategic requirements (6) → Challenges & opportunities (7)
-    6: { src: 'videos/aaron.mov', startSlide: 6,
+    6: { ref: 5 },
+    // Aaron — Goals & strategic requirements (7) → Challenges & opportunities (8)
+    7: { src: 'videos/aaron.mov', startSlide: 7,
          cues: [
-           { at: 48.6, goTo: 7 },
+           { at: 48.6, goTo: 8 },
          ] },
-    7: { ref: 6 },
-    // Dave — Three solutions (8) → Impact-effort (9) → Decision matrix (10)
-    8: { src: 'videos/DT Preso_Dave.mp4', startSlide: 8,
+    8: { ref: 7 },
+    // Dave — Three solutions (9) → Impact-effort (10) → Decision matrix (11)
+    9: { src: 'videos/DT Preso_Dave.mp4', startSlide: 9,
          cues: [
-           { at: 67.6,  goTo: 9 },
-           { at: 119.3, goTo: 10 },
+           { at: 67.6,  goTo: 10 },
+           { at: 119.3, goTo: 11 },
          ] },
-    9:{ ref: 8 }, 10:{ ref: 8 },
-    // Ash — Implementation plan (11) → Budget (12)
-    11:{ src: 'videos/ash.mp4', startSlide: 11,
+    10:{ ref: 9 }, 11:{ ref: 9 },
+    // Ash — Implementation plan (12) → Budget (13)
+    12:{ src: 'videos/ash.mp4', startSlide: 12,
          cues: [
-           { at: 177.0, goTo: 12 },
+           { at: 177.0, goTo: 13 },
          ] },
-    12:{ ref: 11 },
-    13:{ src: 'videos/Rachael - conclusion.mp4' },             // Next steps
+    13:{ ref: 12 },
+    14:{ src: 'videos/Rachael - conclusion.mp4' },             // Next steps
   };
 
   const narrationVideo = document.getElementById('narrationVideo');
@@ -1129,6 +1138,19 @@
     // Autoplay narration for the new slide if available
     setTimeout(maybeAutoplay, 500);
   };
+
+  // Click anywhere on the blank intro slide to start.
+  // The click is a user gesture, which permits subsequent narration audio
+  // to autoplay. After 5s, advance to slide 1.
+  let deckStarted = false;
+  function startDeck(){
+    if(deckStarted) return;
+    deckStarted = true;
+    // Force-play the silent black clip so the gesture is associated with the video element
+    startNarration();
+    setTimeout(() => { if(current === 0) goTo(1); }, 5000);
+  }
+  window.startDeck = startDeck;
 
   // Kick off narration on first load (after a beat so the page settles)
   setTimeout(maybeAutoplay, 800);
